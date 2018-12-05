@@ -1,8 +1,5 @@
 import os
 
-homeDir = os.environ['HOME']
-BroLogLocation = homeDir + '/Documents/Zeektrhusnortlogs/eternalblue_output/bro/'
-
 def readBroLog(log):
     logFields = []
     broPackets = []
@@ -26,5 +23,3 @@ def readBroLogs(broLogsLocation):
             with open(broLogsLocation + "/" + file) as f:
                 broLogsAsObjects[(file.strip('.log'))] = (readBroLog(f))
     return broLogsAsObjects
-            
-print(readBroLogs(BroLogLocation))
