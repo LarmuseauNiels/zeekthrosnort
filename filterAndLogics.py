@@ -2,4 +2,6 @@
 
 def filterAndLogics(broLogsObject,snortAlertObject):
     #TODO filterAndLogics
-    return "output"
+    output = str(broLogsObject) + " Snort Alert: " + str(snortAlertObject)
+
+    return output

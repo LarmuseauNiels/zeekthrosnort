@@ -11,7 +11,7 @@ def outputToFile(outputFile, output):
 
 def getArgument(argumentNumber, argumentDefinition):
     if len(sys.argv)< (argumentNumber +1):
-        argumentContent = raw_input("Please input "+argumentDefinition+": ")
+        argumentContent = input("Please input "+argumentDefinition+": ")
     else:
         argumentContent = sys.argv[argumentNumber]
     print(argumentDefinition +" set to: " + argumentContent)
@@ -41,7 +41,7 @@ def main(): # first function executed on run of script
     #print(snortAlertObject)
     
     # filtering and logics
-    output = filterAndLogics(broLogLocation,snortAlertFileLocation)#TODO
+    output = filterAndLogics(broLogsObject,snortAlertObject)#TODO
 
     # output to file
     outputToFile(outputFile, output)
