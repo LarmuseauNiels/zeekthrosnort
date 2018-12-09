@@ -22,6 +22,8 @@ def main(): # first function executed on run of script
     broLogLocation = getArgument(1, "Bro log folder location")
     snortAlertFileLocation = getArgument(2, "path to Snort alert file")
     outputFile = getArgument(3, "path to output file")
+    
+    
     #interpret input files
     try:
         broLogsObject = readBroLogs(broLogLocation)
@@ -41,10 +43,18 @@ def main(): # first function executed on run of script
     #print(snortAlertObject)
     
     # filtering and logics
-    output = filterAndLogics(broLogsObject,snortAlertObject)#TODO
+    try:
+        output = filterAndLogics(broLogsObject,snortAlertObject)
+    except UnboundLocalError:
+        print("ERROR: Can not filter without all objects")
+    except KeyError:
+        print("ERROR: Objects created from logs are the wrong format")
 
     # output to file
-    outputToFile(outputFile, output)
+    try:
+        outputToFile(outputFile, output)
+    except UnboundLocalError:
+        print("ERROR: cannot output to file, object missing")
 
 if __name__ == '__main__':
     main()
