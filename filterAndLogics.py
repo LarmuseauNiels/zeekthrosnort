@@ -1,20 +1,24 @@
-from datetime import *
+from TimeStamp import TimeStamp
 
-def timeConvertTimeStampFromUnix(input):
-    dt = datetime.fromtimestamp(int(round(float(input)))) 
-    return {"month": dt.month, "day": dt.day, "hour": dt.hour}
-    print(str(dt.month) )
-
-    
 def filterAndLogics(broLogsObject,snortAlertObject):
     
     output = str(broLogsObject) + " Snort Alert: " + str(snortAlertObject)
     #DEBUGGING
-    timeConvertTimeStampFromUnix(broLogsObject["conn"][0]['ts'])
-    #print(broLogsObject)
+    timestamp1 = TimeStamp()
+    timestamp1.setFromUnix(1492363369)#broLogsObject["conn"][0]['ts']
+    print(int(round(float(1492363369))))
+    timestamp2 = TimeStamp()
+    timestamp2.setFromSnort(snortAlertObject[0]['date'])
+    
+    
+    print(timestamp1.toString())
+    print(timestamp2.toString())
+    print(timestamp2.getSecDistance(timestamp1))
+
+
 
   
-    print(broLogsObject["conn"][0])
+    print(snortAlertObject)
 
 
     return output
